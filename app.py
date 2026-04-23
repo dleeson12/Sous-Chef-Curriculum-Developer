@@ -5,7 +5,7 @@ from groq import Groq
 # Replace 'YOUR_GROQ_API_KEY' with the key you just generated
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
-st.set_page_config(page_title="Culinary Curriculum Co-Developer", page_icon="🍳")
+st.set_page_config(page_title="Sous Chef Curriculum Co-Developer", page_icon="🍳")
 
 # System Prompt (The Persona)
 SYSTEM_PROMPT = """
@@ -20,7 +20,7 @@ When providing lesson scaffolds:
 4. DESIGN Quality Assessments: Suggest performance-based evaluations that measure technical precision and sensory consistency.
 """
 
-st.title("🍳 Culinary Curriculum Co-Developer")
+st.title("🍳 Sous Chef Curricular Co-Developer")
 st.caption("Bridging Instructional Design & Culinary Expertise")
 
 # Sidebar for inputs
@@ -37,6 +37,23 @@ with st.sidebar:
     ])
     
     generate_btn = st.button("Generate Lesson Plan")
+
+with st.sidebar:
+    st.divider() # Adds a nice horizontal line
+    st.markdown("### 📖 About the Sous Chef")
+    st.info("""
+    **SC** bridges the gap between culinary expertise and instructional design. 
+    
+    **Frameworks used:**
+    * Backward Design (Wiggins & McTighe)
+    * Inquiry-Based Learning (IBL)
+    * Authentic Assessment
+    
+    **How to use:**
+    1. Enter a technical culinary topic.
+    2. Select your preferred teaching method.
+    3. Generate a scaffolded lesson plan ready for the classroom, lab, or kitchen.
+    """)
 
 # Main Logic
 if generate_btn:
@@ -74,4 +91,4 @@ if generate_btn:
 
         lesson_plan = completion.choices[0].message.content
 
-                
+st.caption("Note on AI Collaboration: This tool is an instructional design prototype intended to scaffold curriculum development. While the Pedagogical Sous-Chef leverages advanced culinary science models, all outputs should be reviewed by subject matter experts for technical accuracy, safety standards (HACCP), and institutional alignment. | © 2026 Doug Leeson")
